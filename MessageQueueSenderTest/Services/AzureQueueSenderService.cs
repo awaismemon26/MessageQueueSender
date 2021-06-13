@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace MessageQueueSenderTest.Controllers
 {
-    public class AzureQueueSenderService
+    public class AzureQueueSenderService : IAzureQueueSenderService
     {
         private readonly IConfiguration _configuration;
         private readonly ILogger _logger;
@@ -24,7 +24,7 @@ namespace MessageQueueSenderTest.Controllers
         //-------------------------------------------------
         // Insert a message into a queue
         //-------------------------------------------------
-        private async Task SendMessage(string message)
+        public async Task SendMessage(string message)
         {
             var connStr = _configuration.GetValue<string>("AzureConfigurations:StorageQueue:ConnectionString");
             var storageQueueName = _configuration.GetValue<string>("AzureConfigurations:StorageQueue:Name");
@@ -43,5 +43,7 @@ namespace MessageQueueSenderTest.Controllers
 
             _logger.LogInformation("Message: {Message} sent to queue {Queue}", message, storageQueueName);
         }
+
+       
     }
 }

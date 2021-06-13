@@ -35,7 +35,8 @@ namespace MessageQueueSenderTest
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "MessageQueueSenderTest", Version = "v1" });
             });
-            services.AddTransient<IMessageSender, AzureQueueSenderService>();
+            services.AddTransient<IAzureQueueSenderService, AzureQueueSenderService>();
+            
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
