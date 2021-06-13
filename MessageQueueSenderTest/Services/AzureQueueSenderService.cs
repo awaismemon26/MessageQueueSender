@@ -13,9 +13,9 @@ namespace MessageQueueSenderTest.Controllers
     public class AzureQueueSenderService : IAzureQueueSenderService
     {
         private readonly IConfiguration _configuration;
-        private readonly ILogger _logger;
+        private readonly ILogger<AzureQueueSenderService> _logger;
 
-        public AzureQueueSenderService(IConfiguration configuration, ILogger logger)
+        public AzureQueueSenderService(IConfiguration configuration, ILogger<AzureQueueSenderService> logger)
         {
             _configuration = configuration;
             _logger = logger;

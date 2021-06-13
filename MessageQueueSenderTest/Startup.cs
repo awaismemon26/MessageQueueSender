@@ -31,11 +31,12 @@ namespace MessageQueueSenderTest
         {
 
             services.AddControllers();
+            services.AddTransient<IAzureQueueSenderService, AzureQueueSenderService>();
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "MessageQueueSenderTest", Version = "v1" });
             });
-            services.AddTransient<IAzureQueueSenderService, AzureQueueSenderService>();
+            
             
         }
 

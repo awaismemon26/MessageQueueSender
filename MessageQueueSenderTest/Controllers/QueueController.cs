@@ -25,9 +25,12 @@ namespace MessageQueueSenderTest.Controllers
         } 
 
         [HttpPost]
-        public async Task PostMessage()
+        public async Task PostMessage([FromQuery] string message)
         {
-            await _queueService.SendMessage("Hello World again!!");
+            if (string.IsNullOrEmpty(message))
+                BadRequest();
+            string messageTrimmed = message.Trim('"');
+            await _queueService.SendMessage(messageTrimmed);
         }
     }
 }
