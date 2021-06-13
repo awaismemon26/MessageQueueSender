@@ -54,7 +54,7 @@ namespace MessageQueueSenderTest.Controllers
             QueueClient queueClient = new QueueClient(connStr, storageQueueName);
 
             var output = await queueClient.ReceiveMessagesAsync();
-            _logger.LogInformation("Total Messages : {TotalMessages} recieved from Queue {Queue}", output.Value.Length, storageQueueName);
+            _logger.LogInformation("Message recieved from Queue {Queue}", storageQueueName);
 
             return output;
         }
