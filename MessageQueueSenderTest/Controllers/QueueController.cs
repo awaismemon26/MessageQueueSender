@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Azure.Storage.Queues.Models;
+
+using Microsoft.AspNetCore.Mvc;
 
 using System;
 using System.Collections.Generic;
@@ -19,9 +21,9 @@ namespace MessageQueueSenderTest.Controllers
         }
 
         [HttpGet]
-        public ActionResult GetAllMessagesFromQueue()
+        public async Task<QueueMessage[]> GetAllMessagesFromQueue()
         {
-            return Ok();
+            return await _queueService.RetrieveAllMessages();
         } 
 
         [HttpPost]
